@@ -1,5 +1,5 @@
 /* Temperature Tracking:
-Write a programme to track raainfall data of three cities over 4 months.
+Write a programme to track temperature data of three cities for a week.
 using 2d array
 Name:Pranay Shahare(B24CE1106)
 */
