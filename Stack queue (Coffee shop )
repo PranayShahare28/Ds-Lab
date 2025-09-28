@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std;
+#define SIZE 10	
+class Queue {
+    string arr[SIZE];   // store full names
+    int front, rear;
+public:
+    Queue() {
+        front = -1;
+        rear = -1;
+    }
+    void enqueue(string name) {
+        if (rear == SIZE - 1) {
+            cout << "Queue is full\n";
+        }
+        else {
+            if (front == -1) {
+                front = 0;
+            }
+            rear++;
+            arr[rear] = name;
+            cout << "Customer " << name << " has joined the queue\n";
+        }
+    }
+    void dequeue() {
+        if (front == -1 || front > rear) {
+            cout << "The queue is empty\n";
+        } 
+        else {
+            cout << "Customer " << arr[front] << " is being served\n";
+            front++;
+        }
+    }
+    void display() {
+        if (front == -1 || front > rear) {
+            cout << "The queue is empty\n";
+        }
+        else {
+            cout << "Current queue: ";
+            for (int i = front; i <= rear; i++) {
+                cout << arr[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+int main() {
+    Queue q;
+    int choice;
+    string name;
+    do {
+        cout << "\n--- Coffee Shop Menu ---\n";
+        cout << "1. Add Customer\n";
+        cout << "2. Serve Customer\n";
+        cout << "3. Show Queue\n";
+        cout << "4. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+        if (choice == 1) {
+            cout << "Enter customer name: ";
+            cin >> name;
+            q.enqueue(name);
+        }
+        else if (choice == 2) {
+            q.dequeue();
+        }
+        else if (choice == 3) {
+            q.display();
+        }
+        else if (choice == 4) {
+            cout << "Exiting...\n";
+        }
+        else {
+            cout << "Invalid choice! Try again.\n";
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
